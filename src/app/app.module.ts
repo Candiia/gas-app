@@ -8,12 +8,16 @@ import { provideHttpClient } from '@angular/common/http';
 import { NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './shared/header/header.component';
 import {MatIconModule} from '@angular/material/icon';
+import { PageNotFoundComponentComponent } from './shared/page-not-found-component/page-not-found-component.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListGasComponent,
-    HeaderComponent
+    HeaderComponent,
+    FilterComponent,
+    HeaderComponent,
+    PageNotFoundComponentComponent
   ],
   imports: [
     BrowserModule,
