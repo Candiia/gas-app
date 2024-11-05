@@ -9,13 +9,15 @@ import { NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FilterComponent } from './components/filter/filter.component';
 import { HeaderComponent } from './shared/header/header.component';
 import {MatIconModule} from '@angular/material/icon';
+import { PageNotFoundComponentComponent } from './shared/page-not-found-component/page-not-found-component.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListGasComponent,
     FilterComponent,
-    HeaderComponent
+    HeaderComponent,
+    PageNotFoundComponentComponent
   ],
   imports: [
     BrowserModule,
