@@ -7,18 +7,22 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { provideHttpClient } from '@angular/common/http';
 import { NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FilterComponent } from './components/filter/filter.component';
+import { HeaderComponent } from './shared/header/header.component';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListGasComponent,
-    FilterComponent
+    FilterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    NgbDropdownModule
+    NgbDropdownModule,
+    MatIconModule
   ],
   providers: [
     provideAnimationsAsync(),
