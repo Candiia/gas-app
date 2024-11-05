@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GasListResponse } from '../../models/gas-app.interface';
+import { Gas, GasListResponse } from '../../models/gas-app.interface';
 import { GasAppService } from '../../services/gas-app.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { GasAppService } from '../../services/gas-app.service';
 })
 export class ListGasComponent implements OnInit {
 
-  gasList: GasListResponse[] = [];
+  gasList: Gas[] = [];
 
   constructor(private gasAppService: GasAppService) { }
 
@@ -20,7 +20,7 @@ export class ListGasComponent implements OnInit {
     });
   }
 
-  normalizeKeysReplacer(key: string, value: any): any {
+  normalizeKeysReplacer(key: string) {
     const nuevo: { [key: string]: string } = {
       "C.P.": "codigoPostal",
       "Dirección": "direccion",
@@ -56,7 +56,7 @@ export class ListGasComponent implements OnInit {
       "IDCCAA": "idCcaa"
     };
 
-    return nuevo[key] || key; // Cambia el nombre si está en keyMap, si no, deja el nombre igual
+    return nuevo[key] || key;
   }
 
 
