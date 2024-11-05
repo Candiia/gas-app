@@ -1,0 +1,19 @@
+.filtro {
+    border-radius: 30px;
+    background-color: #E7E5E5;
+    margin-left: 100px;
+}
+
+* {
+    font-family: "kufam";
+}
+
+.title {
+    margin-left: 300px;
+}
+
+
+@font-face {
+    font-family: "kufam";
+    src: url(../../../../public/assets/fonts/Kufam-Regular.ttf);
+}
