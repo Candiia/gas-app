@@ -6,7 +6,6 @@ import { ListGasComponent } from './components/list-gas/list-gas.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideHttpClient } from '@angular/common/http';
 import { NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FilterComponent } from './components/filter/filter.component';
 import { HeaderComponent } from './shared/header/header.component';
 import {MatIconModule} from '@angular/material/icon';
 
@@ -14,7 +13,6 @@ import {MatIconModule} from '@angular/material/icon';
   declarations: [
     AppComponent,
     ListGasComponent,
-    FilterComponent,
     HeaderComponent
   ],
   imports: [
