@@ -6,16 +6,20 @@ import { ListGasComponent } from './components/list-gas/list-gas.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideHttpClient } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HeaderComponent } from './shared/header/header.component';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListGasComponent
+    ListGasComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    MatIconModule
   ],
   providers: [
     provideAnimationsAsync(),
