@@ -1,1 +1,110 @@
-<p>List gas works</p>
+<main>
+    <div class="container-fluid">
+        <div class="row">
+                <div class="col-2">
+                    <div ngbDropdown class="d-inline-block" class="tamayoFilter">
+                        <button type="button" class="btn btn-secondary" id="dropdownFilter" ngbDropdownToggle>
+                            Filtrar por:
+                        </button>
+                        <div ngbDropdownMenu aria-labelledby="dropdownFilter" >
+                            <form class="px-4 py-3">
+                                
+                                <!-- <div class="form-check">
+                                    <p>Comunidades Autónomas:</p>
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                      Andalucía
+                                    </label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                      Aragón
+                                    </label>
+                                  </div>
+                                  Andalucía, Aragón, Islas Baleares, Canarias, Cantabria, Castilla-La Mancha, Castilla y León, 
+                                  Cataluña, Comunidad de Madrid, Comunidad Foral de Navarra, Comunidad Valenciana, Extremadura, Galicia, 
+                                  País Vasco, Principado de Asturias, Región de Murcia y La Rioja -->
+            
+            
+            
+                                <div class="mb-3">
+                                    <label for="exampleDropdownFormPassword1">Precio mínimo</label>
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Mínimo"
+                                    />
+                                </div>
+            
+                                <div class="mb-3">
+                                    <label for="exampleDropdownFormPassword1">Precio máximo</label>
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Máximo"
+                                    />
+                                </div>
+            
+            
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                      Todas
+                                    </label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                      Gasoil A
+                                    </label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                      Gasoil B
+                                    </label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                      Gasolina 95
+                                    </label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                      Gasolina 98
+                                    </label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                      Hidrógeno
+                                    </label>
+                                  </div>
+                            </form>
+                            <div class="dropdown-divider"></div>
+                            <button type="button" ngbDropdownItem>Filtrar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-10">
+                    <h1 class="mt-5">Gasolineras</h1>
+                </div>
+        </div>
+    </div>
+  
+    <div class="container-fluid">
+      <div class="row">
+          <div class="d-flex justify-content-around col custom-col mt-5">
+            <div class="text-center card border">
+                <div class="card-body">
+                    <p class="card-title">Rótulo</p>
+                    <p class="card-text mt-3">Provincia, Municipio, Localidad, C.P., Dirección</p>
+                </div>
+            </div>
+          </div>
+      </div>
+    </div>
+</main>
