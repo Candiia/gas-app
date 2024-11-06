@@ -2,8 +2,8 @@ export class Gasolinera {
   constructor(
     public id: number,
     public rotulo: string,
-    public price95: number,
-    public priceGasoleoA: number,
+    public price95: string,
+    public priceGasoleoA: string,
     public postalCode: string,
     public municipio: string,
     public direccion: string,
@@ -13,10 +13,10 @@ export class Gasolinera {
     public longitude: number,
     public horario: string,
     public remision: string,
-    public priceBiodiesel: number,
-    public priceGasolina98: number,
-    public priceHidrogeno: number,
-    public priceGasoleoB: number
+    public priceBiodiesel: string,
+    public priceGasolina98: string,
+    public priceHidrogeno: string,
+    public priceGasoleoB: string
   ) { }
 }
 

@@ -17,3 +17,7 @@
     font-family: "kufam";
     src: url(../../../../public/assets/fonts/Kufam-Regular.ttf);
 }
+
+.tamayoImg {
+    width: 25px;
+}
