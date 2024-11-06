@@ -9,9 +9,7 @@ import { Gasolinera } from '../../models/gas-app.dto';
 })
 export class ListGasComponent implements OnInit {
 
-
   codigoPostal = '';
-
   provinciasFiltrados: string[] = [];
   provincias: string[] = [
     "Álava", "Albacete", "Alicante", "Almería", "Asturias", "Ávila", "Badajoz", "Barcelona",
@@ -102,7 +100,7 @@ export class ListGasComponent implements OnInit {
         gasolinera.postalCode === this.codigoPostal
       );
     }
-
+  }
 
   modificarLista(provincia: string) {
     if (this.provinciasFiltrados.includes(provincia)) {
@@ -123,3 +121,4 @@ export class ListGasComponent implements OnInit {
 
   }
 }
+
