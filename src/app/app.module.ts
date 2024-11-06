@@ -15,7 +15,6 @@ import { PageNotFoundComponentComponent } from './shared/page-not-found-componen
     AppComponent,
     ListGasComponent,
     HeaderComponent,
-    FilterComponent,
     HeaderComponent,
     PageNotFoundComponentComponent
   ],
