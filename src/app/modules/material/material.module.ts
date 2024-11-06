@@ -1,23 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-
-
-@NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
-})
-export class MaterialModule { }
-
-
-// IMPORT ALL MATERIAL COMPONENTS
-// #STEPS
-// 1- Import this file as module in app.module.ts ==> import { MaterialModule } from './xyz/abc';
-// 2- Initialize it in imports:[] array ==> imports:[MaterialModule]
-
-import { NgModule } from '@angular/core';
 // *************** FORM CONTROLS ***************
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatCheckboxModule } from '@angular/material/checkbox';

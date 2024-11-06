@@ -7,8 +7,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { provideHttpClient } from '@angular/common/http';
 import { NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './shared/header/header.component';
-import {MatIconModule} from '@angular/material/icon';
 import { PageNotFoundComponentComponent } from './shared/page-not-found-component/page-not-found-component.component';
+import { MaterialModule } from './modules/material/material.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { PageNotFoundComponentComponent } from './shared/page-not-found-componen
     AppRoutingModule,
     NgbModule,
     NgbDropdownModule,
-    MatIconModule
+    MaterialModule
   ],
   providers: [
     provideAnimationsAsync(),
