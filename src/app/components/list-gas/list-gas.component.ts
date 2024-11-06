@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { GasAppService } from '../../services/gas-app.service';
 import { Gasolinera } from '../../models/gas-app.dto';
-import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-list-gas',
@@ -10,6 +9,7 @@ import { filter } from 'rxjs';
 })
 export class ListGasComponent implements OnInit {
 
+  codigoPostal = '';
   listadoGasolineras: Gasolinera[] = [];
   listadoGasolinerasOriginal: Gasolinera[] = [];
   @Input() precioMinimo = 0;
@@ -63,7 +63,6 @@ export class ListGasComponent implements OnInit {
     const min = this.precioMinimo || 0;
     const max = this.precioMax || Number.MAX_VALUE;
 
-    // Filtra a partir de la lista original y asigna el resultado a listadoGasolineras
     this.listadoGasolineras = this.listadoGasolinerasOriginal.filter((gasolinera) => {
       const preciosCombustibles = [
         parseFloat(gasolinera.price95) || 0,
@@ -73,8 +72,18 @@ export class ListGasComponent implements OnInit {
         parseFloat(gasolinera.priceHidrogeno) || 0,
         parseFloat(gasolinera.priceBiodiesel) || 0,
       ];
-
       return preciosCombustibles.some((precio) => precio >= min && precio <= max);
     });
+  }
+
+  aplicarCodigoPostal() {
+    if (this.codigoPostal == '') {
+      this.listadoGasolineras = this.listadoGasolinerasOriginal;
+    } else {
+      this.listadoGasolineras = this.listadoGasolinerasOriginal.filter(gasolinera =>
+        gasolinera.postalCode === this.codigoPostal
+      );
+    }
+
   }
 }
