@@ -59,5 +59,5 @@ export class ListGasComponent implements OnInit {
     return newArray;
   }
 
-
+  
 }
