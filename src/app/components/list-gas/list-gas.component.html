@@ -1,110 +1,78 @@
 <main>
+    <div class="container-fluid mt-5">
+
+        <div class="row justify-content-center align-items-center mb-4">
+
+            <div ngbDropdown class="col-12 col-md-3 d-flex">
+                <button type="button" class="btn filtro" style="width: 15rem;" id="dropdownFilter" ngbDropdownToggle>
+                    Filtrado
+                </button>
+                <div ngbDropdownMenu aria-labelledby="dropdownFilter">
+                    <form class="px-4 py-3">
+                        <div class="mb-3">
+                            <label for="exampleDropdownFormPassword1">Precio mínimo</label>
+                            <input type="text" class="form-control" placeholder="Mínimo" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="exampleDropdownFormPassword1">Precio máximo</label>
+                            <input type="text" class="form-control" placeholder="Máximo" />
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                            <label class="form-check-label" for="flexRadioDefault2">Todas</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                            <label class="form-check-label" for="flexRadioDefault1">Gasoil A</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                            <label class="form-check-label" for="flexRadioDefault1">Gasoil B</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                            <label class="form-check-label" for="flexRadioDefault1">Gasolina 95</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                            <label class="form-check-label" for="flexRadioDefault1">Gasolina 98</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                            <label class="form-check-label" for="flexRadioDefault1">Hidrógeno</label>
+                        </div>
+                    </form>
+                    <div class="dropdown-divider"></div>
+                    <button type="button" ngbDropdownItem>Filtrar</button>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-9">
+                <h1 class="title">Gasolineras</h1>
+            </div>
+        </div>
+    </div>
     <div class="container-fluid">
-        <div class="row">
-                <div class="col-2">
-                    <div ngbDropdown class="d-inline-block" class="tamayoFilter">
-                        <button type="button" class="btn btn-secondary" id="dropdownFilter" ngbDropdownToggle>
-                            Filtrar por:
-                        </button>
-                        <div ngbDropdownMenu aria-labelledby="dropdownFilter" >
-                            <form class="px-4 py-3">
-                                
-                                <!-- <div class="form-check">
-                                    <p>Comunidades Autónomas:</p>
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                      Andalucía
-                                    </label>
-                                  </div>
-                                  <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                                    <label class="form-check-label" for="flexCheckChecked">
-                                      Aragón
-                                    </label>
-                                  </div>
-                                  Andalucía, Aragón, Islas Baleares, Canarias, Cantabria, Castilla-La Mancha, Castilla y León, 
-                                  Cataluña, Comunidad de Madrid, Comunidad Foral de Navarra, Comunidad Valenciana, Extremadura, Galicia, 
-                                  País Vasco, Principado de Asturias, Región de Murcia y La Rioja -->
-            
-            
-            
-                                <div class="mb-3">
-                                    <label for="exampleDropdownFormPassword1">Precio mínimo</label>
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        placeholder="Mínimo"
-                                    />
-                                </div>
-            
-                                <div class="mb-3">
-                                    <label for="exampleDropdownFormPassword1">Precio máximo</label>
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        placeholder="Máximo"
-                                    />
-                                </div>
-            
-            
-                                  <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                    <label class="form-check-label" for="flexRadioDefault2">
-                                      Todas
-                                    </label>
-                                  </div>
-                                  <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                    <label class="form-check-label" for="flexRadioDefault1">
-                                      Gasoil A
-                                    </label>
-                                  </div>
-                                  <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                    <label class="form-check-label" for="flexRadioDefault1">
-                                      Gasoil B
-                                    </label>
-                                  </div>
-                                  <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                    <label class="form-check-label" for="flexRadioDefault1">
-                                      Gasolina 95
-                                    </label>
-                                  </div>
-                                  <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                    <label class="form-check-label" for="flexRadioDefault1">
-                                      Gasolina 98
-                                    </label>
-                                  </div>
-                                  <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                    <label class="form-check-label" for="flexRadioDefault1">
-                                      Hidrógeno
-                                    </label>
-                                  </div>
-                            </form>
-                            <div class="dropdown-divider"></div>
-                            <button type="button" ngbDropdownItem>Filtrar</button>
+        <div class="row justify-content-center">
+            @for (gasolinera of listadoGasolineras; track gasolinera.id) {
+            <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+
+                <div class="card mb-5" style="width: 25rem;">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">{{gasolinera.rotulo}}</h5>
+                        <p class="card-text">
+                            {{gasolinera.provincia}}, {{gasolinera.municipio}}, {{gasolinera.localidad}}
+                            , {{gasolinera.postalCode}}, {{gasolinera.direccion}}
+                        </p>
+                        <div>
+                            <img src alt>
                         </div>
                     </div>
                 </div>
-                <div class="col-10">
-                    <h1 class="mt-5">Gasolineras</h1>
-                </div>
-        </div>
-    </div>
-  
-    <div class="container-fluid">
-      <div class="row">
-          <div class="d-flex justify-content-around col custom-col mt-5">
-            <div class="text-center card border">
-                <div class="card-body">
-                    <p class="card-title">Rótulo</p>
-                    <p class="card-text mt-3">Provincia, Municipio, Localidad, C.P., Dirección</p>
-                </div>
             </div>
-          </div>
-      </div>
+            }
+        </div>
     </div>
 </main>

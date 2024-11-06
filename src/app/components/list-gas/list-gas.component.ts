@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Gas, GasListResponse } from '../../models/gas-app.interface';
 import { GasAppService } from '../../services/gas-app.service';
+import { Gasolinera } from '../../models/gas-app.dto';
 
 @Component({
   selector: 'app-list-gas',
@@ -9,56 +9,55 @@ import { GasAppService } from '../../services/gas-app.service';
 })
 export class ListGasComponent implements OnInit {
 
-  gasList: Gas[] = [];
+  listadoGasolineras: Gasolinera[] = [];
 
-  constructor(private gasAppService: GasAppService) { }
+  constructor(private gasService: GasAppService) { }
 
-  ngOnInit(): void {
-    this.gasAppService.getGasList().subscribe(response => {
-      const normalizedJson = JSON.stringify(response.ListaEESSPrecio, this.normalizeKeysReplacer);
-      this.gasList = JSON.parse(normalizedJson);
+  ngOnInit() {
+    this.gasService.getGasList().subscribe((respuesta) => {
+      // Transformo la respuesta del API en String (JSON)
+      const respuestaEnString = JSON.stringify(respuesta);
+      let parsedData;
+      try {
+        // Transformo el String en un objeto JSON
+        parsedData = JSON.parse(respuestaEnString);
+        let arrayGasolineras = parsedData['ListaEESSPrecio'];
+        this.listadoGasolineras = this.cleanProperties(arrayGasolineras);
+      } catch (error) {
+        console.error('Error parsing JSON:', error);
+      }
     });
   }
 
-  normalizeKeysReplacer(key: string) {
-    const nuevo: { [key: string]: string } = {
-      "C.P.": "codigoPostal",
-      "Dirección": "direccion",
-      "Horario": "horario",
-      "Latitud": "latitud",
-      "Localidad": "localidad",
-      "Longitud (WGS84)": "longitud",
-      "Margen": "margen",
-      "Municipio": "municipio",
-      "Precio Biodiesel": "precioBiodiesel",
-      "Precio Bioetanol": "precioBioetanol",
-      "Precio Gas Natural Comprimido": "precioGasNaturalComprimido",
-      "Precio Gas Natural Licuado": "precioGasNaturalLicuado",
-      "Precio Gases licuados del petróleo": "precioGasesLicuadosPetroleo",
-      "Precio Gasoleo A": "precioGasoleoA",
-      "Precio Gasoleo B": "precioGasoleoB",
-      "Precio Gasoleo Premium": "precioGasoleoPremium",
-      "Precio Gasolina 95 E10": "precioGasolina95E10",
-      "Precio Gasolina 95 E5": "precioGasolina95E5",
-      "Precio Gasolina 95 E5 Premium": "precioGasolina95E5Premium",
-      "Precio Gasolina 98 E10": "precioGasolina98E10",
-      "Precio Gasolina 98 E5": "precioGasolina98E5",
-      "Precio Hidrogeno": "precioHidrogeno",
-      "Provincia": "provincia",
-      "Remisión": "remision",
-      "Rótulo": "rotulo",
-      "Tipo Venta": "tipoVenta",
-      "% BioEtanol": "porcentajeBioetanol",
-      "% Éster metílico": "porcentajeEsterMetilico",
-      "IDEESS": "ideess",
-      "IDMunicipio": "idMunicipio",
-      "IDProvincia": "idProvincia",
-      "IDCCAA": "idCcaa"
-    };
+  private cleanProperties(arrayGasolineras: any) {
+    let newArray: Gasolinera[] = [];
+    arrayGasolineras.forEach((gasolineraChusquera: any) => {
+      const gasolineraConNombresGuenos: any = {};
 
-    return nuevo[key] || key;
+      let gasolinera = new Gasolinera(
+        gasolineraChusquera['IDEESS'],
+        gasolineraChusquera['Rótulo'],
+        gasolineraChusquera['Precio Gasolina 95 E5'],
+        gasolineraChusquera['Precio Gasoleo A'],
+        gasolineraChusquera['C.P.'],
+        gasolineraChusquera['Municipio'],
+        gasolineraChusquera['Dirección'],
+        gasolineraChusquera['Localidad'],
+        gasolineraChusquera['Provincia'],
+        gasolineraChusquera['Latitud'],
+        gasolineraChusquera['Longitud'],
+        gasolineraChusquera['Horario'],
+        gasolineraChusquera['Remisión'],
+        gasolineraChusquera['Precio Biodiesel'],
+        gasolineraChusquera['Precio Gasolina 98 E5'],
+        gasolineraChusquera['Precio Hidrogeno'],
+        gasolineraChusquera['Precio Gasoleo B']
+      );
+
+      newArray.push(gasolinera);
+    });
+    return newArray;
   }
-
 
 
 }
