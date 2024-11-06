@@ -1,12 +1,12 @@
 .filtro {
     border-radius: 30px;
-    background-color: #E7E5E5;
+    background-color: #FFD166;
     margin-left: 100px;
 }
 
 .btnBuscar {
     border-radius: 30px;
-    background-color: #E7E5E5;
+    background-color: #FFD166;
     text-align: center;
     width: 230px;
 }
@@ -30,6 +30,9 @@
     font-family: "kufam";
 }
 
+.tamayoLetra {
+    font-size: 20pt;
+}
 
 @font-face {
     font-family: "kufam";

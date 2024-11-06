@@ -9,7 +9,20 @@ import { Gasolinera } from '../../models/gas-app.dto';
 })
 export class ListGasComponent implements OnInit {
 
+
   codigoPostal = '';
+
+  provinciasFiltrados: string[] = [];
+  provincias: string[] = [
+    "Álava", "Albacete", "Alicante", "Almería", "Asturias", "Ávila", "Badajoz", "Barcelona",
+    "Burgos", "Cáceres", "Cádiz", "Cantabria", "Castellón", "Ciudad Real", "Córdoba",
+    "Cuenca", "Gerona", "Granada", "Guadalajara", "Gipuzkoa", "Huelva", "Huesca", "Jaén",
+    "La Coruña", "La Rioja", "Las Palmas", "León", "Lleida", "Lugo", "Madrid", "Málaga",
+    "Murcia", "Navarra", "Ourense", "Palencia", "Pontevedra", "Salamanca", "Segovia",
+    "Sevilla", "Soria", "Tarragona", "Santa Cruz de Tenerife", "Teruel", "Toledo", "Valencia",
+    "Valladolid", "Vizcaya", "Zamora", "Zaragoza"
+  ]
+
   listadoGasolineras: Gasolinera[] = [];
   listadoGasolinerasOriginal: Gasolinera[] = [];
   @Input() precioMinimo = 0;
@@ -24,7 +37,7 @@ export class ListGasComponent implements OnInit {
       try {
         parsedData = JSON.parse(respuestaEnString);
         let arrayGasolineras = parsedData['ListaEESSPrecio'];
-        this.listadoGasolineras = this.cleanProperties(arrayGasolineras).slice(0, 40);
+        this.listadoGasolineras = this.cleanProperties(arrayGasolineras);
         this.listadoGasolinerasOriginal = [...this.listadoGasolineras];
       } catch (error) {
         console.error('Error parsing JSON:', error);
@@ -44,7 +57,7 @@ export class ListGasComponent implements OnInit {
         gasolineraChusquera['Municipio'],
         gasolineraChusquera['Dirección'],
         gasolineraChusquera['Localidad'],
-        gasolineraChusquera['Provincia'],
+        this.capitalizeFirstLetter(gasolineraChusquera['Provincia']),
         gasolineraChusquera['Latitud'],
         gasolineraChusquera['Longitud'],
         gasolineraChusquera['Horario'],
@@ -57,6 +70,10 @@ export class ListGasComponent implements OnInit {
       newArray.push(gasolinera);
     });
     return newArray;
+  }
+
+  private capitalizeFirstLetter(text: string): string {
+    return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
   }
 
   aplicarFiltroPrecio() {
@@ -76,12 +93,31 @@ export class ListGasComponent implements OnInit {
     });
   }
 
+
   aplicarCodigoPostal() {
     if (this.codigoPostal == '') {
       this.listadoGasolineras = this.listadoGasolinerasOriginal;
     } else {
       this.listadoGasolineras = this.listadoGasolinerasOriginal.filter(gasolinera =>
         gasolinera.postalCode === this.codigoPostal
+      );
+    }
+
+
+  modificarLista(provincia: string) {
+    if (this.provinciasFiltrados.includes(provincia)) {
+      this.provinciasFiltrados = this.provinciasFiltrados.filter(pro => pro !== provincia);
+    } else {
+      this.provinciasFiltrados.push(provincia);
+    }
+  }
+
+  filtrarProvinciaMultiple() {
+    if (this.provinciasFiltrados.length === 0) {
+      this.listadoGasolineras = this.listadoGasolinerasOriginal;
+    } else {
+      this.listadoGasolineras = this.listadoGasolinerasOriginal.filter(gasolinera =>
+        this.provinciasFiltrados.includes(gasolinera.provincia)
       );
     }
 

@@ -7,9 +7,12 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { provideHttpClient } from '@angular/common/http';
 import { NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './shared/header/header.component';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { PageNotFoundComponentComponent } from './shared/page-not-found-component/page-not-found-component.component';
 import { FormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +28,9 @@ import { FormsModule } from '@angular/forms';
     NgbModule,
     NgbDropdownModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
+    MatSelectModule,
+    MatCheckboxModule
   ],
   providers: [
     provideAnimationsAsync(),
