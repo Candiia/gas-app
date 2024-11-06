@@ -4,7 +4,6 @@
         <h1 class="text-center">Gasolineras</h1>
 
         <div class="row mb-4">
-
             <div ngbDropdown class="col-12 col-md-3 d-flex">
                 <button type="button" class="btn filtro" style="width: 15rem;" id="dropdownFilter" ngbDropdownToggle>
                     Filtrar precio
@@ -23,6 +22,7 @@
                                 placeholder="Máximo" />
                         </div>
                     </form>
+
                     <div class="d-flex justify-content-center">
                         <button type="button" class="btn btnBuscar" ngbDropdownItem
                             (click)="aplicarFiltroPrecio()">Filtrar</button>
@@ -48,6 +48,16 @@
                         <button type="button" class="btn btnBuscar" (click)="filtrarProvinciaMultiple()">Filtrar</button>
                     </div>
                 </div>
+            </div>
+
+            <div class="col-12 col-md-3 d-flex">
+                <form class="form-inline d-flex diseyoInput">
+                    <input class="form-control mr-sm-2 diseyoInput " type="search" placeholder="Código Postal" name="codigoPostal"
+                        [(ngModel)]="codigoPostal" aria-label="search">
+                    <button class="btn" type="submit" (click)="aplicarCodigoPostal()">
+                        Buscar
+                    </button>
+                </form>
             </div>
 
         </div>

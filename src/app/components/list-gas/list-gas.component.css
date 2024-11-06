@@ -15,6 +15,17 @@
     border-radius: 30px;
 }
 
+.diseyoInput {
+    border-radius: 30px;
+    background-color: #E7E5E5;
+}
+
+.bntCP {
+    border-radius: 30px;
+    background-color: #E7E5E5;
+    margin-left: -50px;
+}
+
 * {
     font-family: "kufam";
 }
