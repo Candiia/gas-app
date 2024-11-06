@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { GasAppService } from '../../services/gas-app.service';
 import { Gasolinera } from '../../models/gas-app.dto';
 import { filter } from 'rxjs';
@@ -11,9 +11,9 @@ import { filter } from 'rxjs';
 export class ListGasComponent implements OnInit {
 
   listadoGasolineras: Gasolinera[] = [];
-  precioMinimo = 0;
-  precioMax = 0;
-  filtro = 0;
+  listadoGasolinerasOriginal: Gasolinera[] = [];
+  @Input() precioMinimo = 0;
+  @Input() precioMax = 0;
 
   constructor(private gasService: GasAppService) { }
 
@@ -24,7 +24,8 @@ export class ListGasComponent implements OnInit {
       try {
         parsedData = JSON.parse(respuestaEnString);
         let arrayGasolineras = parsedData['ListaEESSPrecio'];
-        this.listadoGasolineras = this.cleanProperties(arrayGasolineras);
+        this.listadoGasolineras = this.cleanProperties(arrayGasolineras).slice(0, 40);
+        this.listadoGasolinerasOriginal = [...this.listadoGasolineras];
       } catch (error) {
         console.error('Error parsing JSON:', error);
       }
@@ -34,13 +35,11 @@ export class ListGasComponent implements OnInit {
   private cleanProperties(arrayGasolineras: any) {
     let newArray: Gasolinera[] = [];
     arrayGasolineras.forEach((gasolineraChusquera: any) => {
-      const gasolineraConNombresGuenos: any = {};
-
-      let gasolinera = new Gasolinera(
+      const gasolinera = new Gasolinera(
         gasolineraChusquera['IDEESS'],
         gasolineraChusquera['Rótulo'],
-        gasolineraChusquera['Precio Gasolina 95 E5'],
-        gasolineraChusquera['Precio Gasoleo A'],
+        gasolineraChusquera['Precio Gasolina 95 E5'].replace(',', '.'),
+        gasolineraChusquera['Precio Gasoleo A'].replace(',', '.'),
         gasolineraChusquera['C.P.'],
         gasolineraChusquera['Municipio'],
         gasolineraChusquera['Dirección'],
@@ -50,20 +49,32 @@ export class ListGasComponent implements OnInit {
         gasolineraChusquera['Longitud'],
         gasolineraChusquera['Horario'],
         gasolineraChusquera['Remisión'],
-        gasolineraChusquera['Precio Biodiesel'],
-        gasolineraChusquera['Precio Gasolina 98 E5'],
-        gasolineraChusquera['Precio Hidrogeno'],
-        gasolineraChusquera['Precio Gasoleo B']
+        gasolineraChusquera['Precio Biodiesel'].replace(',', '.'),
+        gasolineraChusquera['Precio Gasolina 98 E5'].replace(',', '.'),
+        gasolineraChusquera['Precio Hidrogeno'].replace(',', '.'),
+        gasolineraChusquera['Precio Gasoleo B'].replace(',', '.')
       );
-
       newArray.push(gasolinera);
     });
     return newArray;
   }
 
-  aplicarFiltroPrecio(){
-    this.listadoGasolineras = this.cleanProperties(this.listadoGasolineras);
-    
+  aplicarFiltroPrecio() {
+    const min = this.precioMinimo || 0;
+    const max = this.precioMax || Number.MAX_VALUE;
+
+    // Filtra a partir de la lista original y asigna el resultado a listadoGasolineras
+    this.listadoGasolineras = this.listadoGasolinerasOriginal.filter((gasolinera) => {
+      const preciosCombustibles = [
+        parseFloat(gasolinera.price95) || 0,
+        parseFloat(gasolinera.priceGasoleoA) || 0,
+        parseFloat(gasolinera.priceGasoleoB) || 0,
+        parseFloat(gasolinera.priceGasolina98) || 0,
+        parseFloat(gasolinera.priceHidrogeno) || 0,
+        parseFloat(gasolinera.priceBiodiesel) || 0,
+      ];
+
+      return preciosCombustibles.some((precio) => precio >= min && precio <= max);
+    });
   }
-  
 }

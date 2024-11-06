@@ -1,58 +1,36 @@
 <main>
     <div class="container-fluid mt-5">
 
-        <div class="row justify-content-center align-items-center mb-4">
+        <h1 class="text-center">Gasolineras</h1>
+
+        <div class="row mb-4">
 
             <div ngbDropdown class="col-12 col-md-3 d-flex">
                 <button type="button" class="btn filtro" style="width: 15rem;" id="dropdownFilter" ngbDropdownToggle>
-                    Filtrado
+                    Filtrar precio
                 </button>
                 <div ngbDropdownMenu aria-labelledby="dropdownFilter">
                     <form class="px-4 py-3">
                         <div class="mb-3">
                             <label for="exampleDropdownFormPassword1">Precio mínimo</label>
-                            <input type="number" [(ngModel)]="precioMinimo" class="form-control" placeholder="Mínimo" />
+                            <input type="number" [(ngModel)]="precioMinimo" name="precioMinimo" class="form-control tamayoInput"
+                                placeholder="Mínimo" />
                         </div>
 
                         <div class="mb-3">
                             <label for="exampleDropdownFormPassword1">Precio máximo</label>
-                            <input type="number"  [(ngModel)]="precioMax" class="form-control" placeholder="Máximo" />
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
-                                checked>
-                            <label class="form-check-label" for="flexRadioDefault2">Todas</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                            <label class="form-check-label" for="flexRadioDefault1">Gasoil A</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                            <label class="form-check-label" for="flexRadioDefault1">Gasoil B</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                            <label class="form-check-label" for="flexRadioDefault1">Gasolina 95</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                            <label class="form-check-label" for="flexRadioDefault1">Gasolina 98</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                            <label class="form-check-label" for="flexRadioDefault1">Hidrógeno</label>
+                            <input type="number" [(ngModel)]="precioMax" name="precioMax" class="form-control tamayoInput"
+                                placeholder="Máximo" />
                         </div>
                     </form>
-                    <div class="dropdown-divider"></div>
-                    <button type="button" ngbDropdownItem>Filtrar</button>
+                    <div class="d-flex justify-content-center">
+                        <button type="button" class="btn btnBuscar" ngbDropdownItem
+                            (click)="aplicarFiltroPrecio()">Filtrar</button>
+                    </div>
+
                 </div>
             </div>
 
-            <div class="col-12 col-md-9">
-                <h1 class="title">Gasolineras</h1>
-            </div>
         </div>
     </div>
     <div class="container-fluid">
@@ -70,43 +48,43 @@
                         <div class="d-flex gap-5 ms-5">
                             <img width="100px" src="/assets/img/A.png" alt="precio gasoil A">
                             @if (gasolinera.priceGasoleoA == "") {
-                                <p class="mt-4">--</p>
+                            <p class="mt-4">--</p>
                             }@else{
-                               <p class="mt-4">{{gasolinera.priceGasoleoA}}€</p>
+                            <p class="mt-4">{{gasolinera.priceGasoleoA}}€</p>
                             }
                         </div>
                         <div class="d-flex gap-5 ms-5">
                             <img width="100px" src="/assets/img/B.png" alt="precio gasoil B">
                             @if (gasolinera.priceGasoleoB == "") {
-                                <p class="mt-4">--</p>
+                            <p class="mt-4">--</p>
                             }@else{
-                               <p class="mt-4">{{gasolinera.priceGasoleoB}}€</p>
+                            <p class="mt-4">{{gasolinera.priceGasoleoB}}€</p>
                             }
                         </div>
                         <div class="d-flex gap-5 ms-5">
                             <img width="100px" src="/assets/img/95.png" alt="precio gasolina 95">
                             @if (gasolinera.price95 == "") {
-                                <p class="mt-4">--</p>
+                            <p class="mt-4">--</p>
                             }@else{
-                               <p class="mt-4">{{gasolinera.price95}}€</p>
+                            <p class="mt-4">{{gasolinera.price95}}€</p>
                             }
                         </div>
                         <div class="d-flex gap-5 ms-5">
                             <img width="100px" src="/assets/img/98.png" alt="precio gasolina 98">
                             @if (gasolinera.priceGasolina98 == "") {
-                                <p class="mt-4">--</p>
+                            <p class="mt-4">--</p>
                             }@else{
-                               <p class="mt-4">{{gasolinera.priceGasolina98}}€</p>
+                            <p class="mt-4">{{gasolinera.priceGasolina98}}€</p>
                             }
                         </div>
                         <div class="d-flex gap-5 ms-5">
                             <img width="100px" src="/assets/img/H.png" alt="precio hidrógeno">
-                                @if (gasolinera.priceHidrogeno == "") {
-                                    <p class="mt-4">--</p>
-                                }@else{
-                                   <p class="mt-4">{{gasolinera.priceHidrogeno}}€</p>
-                                }
-                                
+                            @if (gasolinera.priceHidrogeno == "") {
+                            <p class="mt-4">--</p>
+                            }@else{
+                            <p class="mt-4">{{gasolinera.priceHidrogeno}}€</p>
+                            }
+
                         </div>
                     </div>
                 </div>
