@@ -77,4 +77,8 @@ export class ListGasComponent implements OnInit {
       return preciosCombustibles.some((precio) => precio >= min && precio <= max);
     });
   }
+
+  aplicarFiltroTipo() {
+    return 
+  }
 }

@@ -24,7 +24,8 @@ import { MatIconModule } from '@angular/material/icon';
     AppRoutingModule,
     NgbModule,
     NgbDropdownModule,
-    MatIconModule
+    MatIconModule,
+    FormsModule
   ],
   providers: [
     provideAnimationsAsync(),
