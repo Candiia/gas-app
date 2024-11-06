@@ -10,6 +10,7 @@ import { filter } from 'rxjs';
 })
 export class ListGasComponent implements OnInit {
 
+  provinciasFiltrados: string[] = [];
   provincias: string[] = [
     "Álava", "Albacete", "Alicante", "Almería", "Asturias", "Ávila", "Badajoz", "Barcelona",
     "Burgos", "Cáceres", "Cádiz", "Cantabria", "Castellón", "Ciudad Real", "Córdoba",
@@ -18,7 +19,7 @@ export class ListGasComponent implements OnInit {
     "Murcia", "Navarra", "Ourense", "Palencia", "Pontevedra", "Salamanca", "Segovia",
     "Sevilla", "Soria", "Tarragona", "Santa Cruz de Tenerife", "Teruel", "Toledo", "Valencia",
     "Valladolid", "Vizcaya", "Zamora", "Zaragoza"
-  ];
+  ]
   listadoGasolineras: Gasolinera[] = [];
   listadoGasolinerasOriginal: Gasolinera[] = [];
   @Input() precioMinimo = 0;
@@ -33,7 +34,7 @@ export class ListGasComponent implements OnInit {
       try {
         parsedData = JSON.parse(respuestaEnString);
         let arrayGasolineras = parsedData['ListaEESSPrecio'];
-        this.listadoGasolineras = this.cleanProperties(arrayGasolineras).slice(0, 40);
+        this.listadoGasolineras = this.cleanProperties(arrayGasolineras);
         this.listadoGasolinerasOriginal = [...this.listadoGasolineras];
       } catch (error) {
         console.error('Error parsing JSON:', error);
@@ -53,7 +54,7 @@ export class ListGasComponent implements OnInit {
         gasolineraChusquera['Municipio'],
         gasolineraChusquera['Dirección'],
         gasolineraChusquera['Localidad'],
-        gasolineraChusquera['Provincia'],
+        this.capitalizeFirstLetter(gasolineraChusquera['Provincia']),
         gasolineraChusquera['Latitud'],
         gasolineraChusquera['Longitud'],
         gasolineraChusquera['Horario'],
@@ -68,11 +69,14 @@ export class ListGasComponent implements OnInit {
     return newArray;
   }
 
+  private capitalizeFirstLetter(text: string): string {
+    return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+  }
+
   aplicarFiltroPrecio() {
     const min = this.precioMinimo || 0;
     const max = this.precioMax || Number.MAX_VALUE;
 
-    // Filtra a partir de la lista original y asigna el resultado a listadoGasolineras
     this.listadoGasolineras = this.listadoGasolinerasOriginal.filter((gasolinera) => {
       const preciosCombustibles = [
         parseFloat(gasolinera.price95) || 0,
@@ -85,5 +89,23 @@ export class ListGasComponent implements OnInit {
 
       return preciosCombustibles.some((precio) => precio >= min && precio <= max);
     });
+  }
+
+  modificarLista(provincia: string) {
+    if (this.provinciasFiltrados.includes(provincia)) {
+      this.provinciasFiltrados = this.provinciasFiltrados.filter(pro => pro !== provincia);
+    } else {
+      this.provinciasFiltrados.push(provincia);
+    }
+  }
+
+  filtrarProvinciaMultiple() {
+    if (this.provinciasFiltrados.length === 0) {
+      this.listadoGasolineras = this.listadoGasolinerasOriginal;
+    } else {
+      this.listadoGasolineras = this.listadoGasolinerasOriginal.filter(gasolinera =>
+        this.provinciasFiltrados.includes(gasolinera.provincia)
+      );
+    }
   }
 }
