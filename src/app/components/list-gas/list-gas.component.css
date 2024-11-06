@@ -4,12 +4,19 @@
     margin-left: 100px;
 }
 
-* {
-    font-family: "kufam";
+.btnBuscar {
+    border-radius: 30px;
+    background-color: #E7E5E5;
+    text-align: center;
+    width: 230px;
 }
 
-.title {
-    margin-left: 300px;
+.tamayoInput {
+    border-radius: 30px;
+}
+
+* {
+    font-family: "kufam";
 }
 
 

@@ -8,7 +8,8 @@ import { provideHttpClient } from '@angular/common/http';
 import { NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './shared/header/header.component';
 import { PageNotFoundComponentComponent } from './shared/page-not-found-component/page-not-found-component.component';
-import { MaterialModule } from './modules/material/material.module';
+import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { MaterialModule } from './modules/material/material.module';
     AppRoutingModule,
     NgbModule,
     NgbDropdownModule,
-    MaterialModule
+    MatIconModule
   ],
   providers: [
     provideAnimationsAsync(),
