@@ -8,7 +8,6 @@ import { Gasolinera } from '../../models/gas-app.dto';
   styleUrl: './list-gas.component.css'
 })
 export class ListGasComponent implements OnInit {
-
   codigoPostal = '';
   provinciasFiltrados: string[] = [];
   provincias: string[] = [
@@ -20,6 +19,15 @@ export class ListGasComponent implements OnInit {
     "Sevilla", "Soria", "Tarragona", "Santa Cruz de Tenerife", "Teruel", "Toledo", "Valencia",
     "Valladolid", "Vizcaya", "Zamora", "Zaragoza"
   ]
+  gasolineras: any[] = []; // Lista original de gasolineras
+  gasolinerasFiltradas: any[] = []; // Lista filtrada de gasolineras
+  fuelFilter = {
+    gasoleoA: true,
+    gasoleoB: true,
+    gasolina95: true,
+    gasolina98: true,
+    hidrogeno: true
+};
 
   listadoGasolineras: Gasolinera[] = [];
   listadoGasolinerasOriginal: Gasolinera[] = [];
@@ -41,6 +49,7 @@ export class ListGasComponent implements OnInit {
         console.error('Error parsing JSON:', error);
       }
     });
+    this.cargarGasolineras();
   }
 
   private cleanProperties(arrayGasolineras: any) {
@@ -91,7 +100,6 @@ export class ListGasComponent implements OnInit {
     });
   }
 
-
   aplicarCodigoPostal() {
     if (this.codigoPostal == '') {
       this.listadoGasolineras = this.listadoGasolinerasOriginal;
@@ -118,7 +126,23 @@ export class ListGasComponent implements OnInit {
         this.provinciasFiltrados.includes(gasolinera.provincia)
       );
     }
-
   }
+
+  cargarGasolineras(): void {
+    this.gasolinerasFiltradas = [...this.gasolineras];
+  }
+
+  aplicarFiltroTipo(): void {
+    this.listadoGasolineras = this.listadoGasolinerasOriginal.filter(gasolinera => {
+      return (
+        (this.fuelFilter.gasoleoA && parseFloat(gasolinera.priceGasoleoA) > 0) ||
+        (this.fuelFilter.gasoleoB && parseFloat(gasolinera.priceGasoleoB) > 0) ||
+        (this.fuelFilter.gasolina95 && parseFloat(gasolinera.price95) > 0) ||
+        (this.fuelFilter.gasolina98 && parseFloat(gasolinera.priceGasolina98) > 0) ||
+        (this.fuelFilter.hidrogeno && parseFloat(gasolinera.priceHidrogeno) > 0)
+      );
+    });
+  }
+
 }
 
