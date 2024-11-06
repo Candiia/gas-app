@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GasAppService } from '../../services/gas-app.service';
 import { Gasolinera } from '../../models/gas-app.dto';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-list-gas',
@@ -10,16 +11,17 @@ import { Gasolinera } from '../../models/gas-app.dto';
 export class ListGasComponent implements OnInit {
 
   listadoGasolineras: Gasolinera[] = [];
+  precioMinimo = 0;
+  precioMax = 0;
+  filtro = 0;
 
   constructor(private gasService: GasAppService) { }
 
   ngOnInit() {
     this.gasService.getGasList().subscribe((respuesta) => {
-      // Transformo la respuesta del API en String (JSON)
       const respuestaEnString = JSON.stringify(respuesta);
       let parsedData;
       try {
-        // Transformo el String en un objeto JSON
         parsedData = JSON.parse(respuestaEnString);
         let arrayGasolineras = parsedData['ListaEESSPrecio'];
         this.listadoGasolineras = this.cleanProperties(arrayGasolineras);
@@ -59,5 +61,9 @@ export class ListGasComponent implements OnInit {
     return newArray;
   }
 
+  aplicarFiltroPrecio(){
+    this.listadoGasolineras = this.cleanProperties(this.listadoGasolineras);
+    
+  }
   
 }

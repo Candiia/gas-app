@@ -9,6 +9,7 @@ import { NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './shared/header/header.component';
 import {MatIconModule} from '@angular/material/icon';
 import { PageNotFoundComponentComponent } from './shared/page-not-found-component/page-not-found-component.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { PageNotFoundComponentComponent } from './shared/page-not-found-componen
     AppRoutingModule,
     NgbModule,
     NgbDropdownModule,
-    MatIconModule
+    MatIconModule,
+    FormsModule
   ],
   providers: [
     provideAnimationsAsync(),
