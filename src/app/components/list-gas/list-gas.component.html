@@ -27,7 +27,24 @@
                         <button type="button" class="btn btnBuscar" ngbDropdownItem
                             (click)="aplicarFiltroPrecio()">Filtrar</button>
                     </div>
+                </div>
+            </div>
 
+            <div ngbDropdown class="col-12 col-md-3 d-flex">
+                <button type="button" class="btn filtro" style="width: 15rem;" id="dropdownFilter" ngbDropdownToggle>
+                    Provincias
+                </button>
+                <div ngbDropdownMenu aria-labelledby="dropdownFilter">
+                    <form class="px-4 py-3">
+                        @for (provincias of provincias; track provincias.indexOf(provincias)) {
+
+                        <mat-checkbox class="example-margin">{{provincias}}</mat-checkbox>
+
+                        }
+                    </form>
+                    <div class="d-flex justify-content-center">
+                        <button type="button" class="btn btnBuscar">Filtrar</button>
+                    </div>
                 </div>
             </div>
 
