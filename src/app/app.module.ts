@@ -6,7 +6,6 @@ import { ListGasComponent } from './components/list-gas/list-gas.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideHttpClient } from '@angular/common/http';
 import { NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FilterComponent } from './components/filter/filter.component';
 import { HeaderComponent } from './shared/header/header.component';
 import {MatIconModule} from '@angular/material/icon';
 import { PageNotFoundComponentComponent } from './shared/page-not-found-component/page-not-found-component.component';
@@ -15,6 +14,7 @@ import { PageNotFoundComponentComponent } from './shared/page-not-found-componen
   declarations: [
     AppComponent,
     ListGasComponent,
+    HeaderComponent,
     FilterComponent,
     HeaderComponent,
     PageNotFoundComponentComponent
