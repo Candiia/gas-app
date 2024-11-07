@@ -13,9 +13,9 @@ export class ListGasComponent implements OnInit {
   provinciasFiltrados: string[] = [];
   provincias: string[] = [
     "Álava", "Albacete", "Alicante", "Almería", "Asturias", "Ávila", "Badajoz", "Barcelona",
-    "Burgos", "Cáceres", "Cádiz", "Cantabria", "Castellón", "Ciudad Real", "Córdoba",
+    "Burgos", "Cáceres", "Cádiz", "Cantabria", "Castellón", "Ciudad real", "Córdoba",
     "Cuenca", "Gerona", "Granada", "Guadalajara", "Gipuzkoa", "Huelva", "Huesca", "Jaén",
-    "La Coruña", "La Rioja", "Las Palmas", "León", "Lleida", "Lugo", "Madrid", "Málaga",
+    "Coruña (a)", "Rioja (la)", "Palmas (las)", "León", "Lleida", "Lugo", "Madrid", "Málaga",
     "Murcia", "Navarra", "Ourense", "Palencia", "Pontevedra", "Salamanca", "Segovia",
     "Sevilla", "Soria", "Tarragona", "Santa Cruz de Tenerife", "Teruel", "Toledo", "Valencia",
     "Valladolid", "Vizcaya", "Zamora", "Zaragoza"
